@@ -14,12 +14,17 @@
 # limitations under the License.
 #
 
+# Architecture
+TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4
+TARGET_CPU_VARIANT := krait
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := krait
+TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Krait optimizations
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -137,3 +142,11 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
 # Enable workaround for slow rom flash
 BOARD_SUPPRESS_SECURE_ERASE := true
+
+GCC_VERSION_AND := 4.9
+GCC_VERSION_ARM := 4.10-linaro
+
+WITH_DEXPREOPT := true
+
+ENABLE_GRAPHITE := true
+OPT_A_LOT := true
